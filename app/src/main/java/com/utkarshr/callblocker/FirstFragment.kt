@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 /**
@@ -24,6 +25,14 @@ class FirstFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val mainActivity = activity as MainActivity
+        mainActivity.tv_toolbar.text = "Call Blocker"
+        mainActivity.supportActionBar?.setDisplayShowTitleEnabled(false)
+        mainActivity.toolbar.title = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
