@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".SecondFragment">
-
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -15,8 +16,13 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:hint=" Enter number"
+        android:backgroundTint="@color/radio_btn_color"
+        android:textCursorDrawable="@drawable/cursor_color"
         android:inputType="phone"
-        android:hint="Enter number"
+        android:textColor="@color/blueGray50"
+        android:textColorHint="@color/blueGray300"
+        android:textFontWeight="800"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,19 +42,38 @@
             android:id="@+id/start_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Starts with" />
+            android:buttonTint="@color/radio_btn_color"
+            android:checked="true"
+            android:paddingStart="8dp"
+            android:paddingBottom="4dp"
+            android:text="Starts with"
+            android:textColor="@color/radio_btn_color"
+            android:textFontWeight="700"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/end_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ends with" />
+            android:buttonTint="@color/radio_btn_color"
+            android:paddingStart="8dp"
+            android:paddingBottom="4dp"
+            android:text="Ends with"
+            android:textColor="@color/radio_btn_color"
+            android:textFontWeight="700"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/contain_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contains" />
+            android:buttonTint="@color/radio_btn_color"
+            android:paddingStart="8dp"
+            android:paddingBottom="4dp"
+            android:text="Contains"
+            android:textColor="@color/radio_btn_color"
+            android:textFontWeight="700"
+            android:textSize="16sp" />
 
     </RadioGroup>
 
@@ -56,10 +81,13 @@
         android:id="@+id/save_button"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
+        android:layout_marginTop="64dp"
+        android:background="@color/blueGray800"
         android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/yellow800"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
