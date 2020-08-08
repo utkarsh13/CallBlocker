@@ -21,11 +21,19 @@ import androidx.fragment.app.Fragment
 import com.utkarshr.callblocker.database.RegexType
 import com.utkarshr.callblocker.database.SpamNumber
 import com.utkarshr.callblocker.database.SpamNumberDatabase
+import com.utkarshr.callblocker.database.SpamNumberDatabaseDao
+import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import java.util.*
 
 
 /**
@@ -36,6 +44,7 @@ class SecondFragment : Fragment() {
     private lateinit var editText: EditText
     private lateinit var saveButton: Button
     private lateinit var radioGroup: RadioGroup
+    private lateinit var dao: SpamNumberDatabaseDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,6 +69,11 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dao = SpamNumberDatabase.getInstance(requireContext()).dao
     }
 
     private fun setupEditText() {
@@ -103,7 +117,14 @@ class SecondFragment : Fragment() {
 
             val spamNumber = SpamNumber(phone, regexType, regex)
 
-//            SpamNumberDatabase.getInstance(requireContext()).dao.insert(spamNumber)
+            Observable.fromCallable { dao.insert(spamNumber) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    Toast.makeText(requireContext(), "Successfully saved spam number", Toast.LENGTH_LONG).show()
+                }, { error ->
+                    Toast.makeText(requireContext(), "Not able to save data\n${error.toString()}", Toast.LENGTH_LONG).show()
+                })
 
 
         }
