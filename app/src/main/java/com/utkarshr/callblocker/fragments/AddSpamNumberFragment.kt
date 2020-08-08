@@ -1,4 +1,4 @@
-package com.utkarshr.callblocker
+package com.utkarshr.callblocker.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -15,6 +15,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import com.utkarshr.callblocker.R
 import com.utkarshr.callblocker.database.RegexType
 import com.utkarshr.callblocker.database.SpamNumber
 import com.utkarshr.callblocker.database.SpamNumberDatabase

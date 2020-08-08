@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.utkarshr.callblocker.SpamNumberListFragment"
+        android:name="com.utkarshr.callblocker.fragments.SpamNumberListFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_spam_number_list">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.utkarshr.callblocker.AddSpamNumberFragment"
+        android:name="com.utkarshr.callblocker.fragments.AddSpamNumberFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_add_spam_number">
 
