@@ -10,5 +10,6 @@
     <color name="blueGray200">#B0BEC5</color>
     <color name="blueGray100">#CFD8DC</color>
     <color name="blueGray50">#ECEFF1</color>
-    <color name="yellow800">#FBC02D</color>
+    <color name="yellow600">#FBC02D</color>
+    <color name="yellow500alpha50">#80FFEB3B</color>
 </resources>

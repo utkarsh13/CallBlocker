@@ -84,7 +84,7 @@
         android:layout_marginTop="64dp"
         android:background="@color/blueGray800"
         android:text="Save"
-        android:textColor="@color/yellow800"
+        android:textColor="@color/yellow600"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
