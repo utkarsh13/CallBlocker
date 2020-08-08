@@ -122,6 +122,7 @@ class SecondFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     Toast.makeText(requireContext(), "Successfully saved spam number", Toast.LENGTH_LONG).show()
+                    requireActivity().onBackPressed()
                 }, { error ->
                     Toast.makeText(requireContext(), "Not able to save data\n${error.toString()}", Toast.LENGTH_LONG).show()
                 })
