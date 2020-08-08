@@ -3,8 +3,6 @@ package com.utkarshr.callblocker
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +13,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Toast
-import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.utkarshr.callblocker.database.RegexType
@@ -23,23 +20,19 @@ import com.utkarshr.callblocker.database.SpamNumber
 import com.utkarshr.callblocker.database.SpamNumberDatabase
 import com.utkarshr.callblocker.database.SpamNumberDatabaseDao
 import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.lang.Exception
-import java.util.*
 
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class AddSpamNumberFragment : Fragment() {
 
     private lateinit var editText: EditText
     private lateinit var saveButton: Button
@@ -51,7 +44,7 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_second, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_spam_number, container, false)
 
         saveButton = view.findViewById<Button>(R.id.save_button)
         radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
