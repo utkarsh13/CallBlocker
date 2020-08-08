@@ -3,8 +3,8 @@ package com.utkarshr.callblocker.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "blocked_number_table")
-data class BlockedNumber (
+@Entity(tableName = "spam_number_table")
+data class SpamNumber (
     val rawNumber: String,
 
     val regexType: RegexType,

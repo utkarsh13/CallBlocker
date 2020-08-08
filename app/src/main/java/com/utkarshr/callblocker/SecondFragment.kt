@@ -3,14 +3,24 @@ package com.utkarshr.callblocker
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioGroup
+import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import com.utkarshr.callblocker.database.RegexType
+import com.utkarshr.callblocker.database.SpamNumber
+import com.utkarshr.callblocker.database.SpamNumberDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -23,7 +33,9 @@ import java.lang.Exception
  */
 class SecondFragment : Fragment() {
 
-    lateinit var editText: EditText
+    private lateinit var editText: EditText
+    private lateinit var saveButton: Button
+    private lateinit var radioGroup: RadioGroup
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,8 +44,11 @@ class SecondFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_second, container, false)
 
+        saveButton = view.findViewById<Button>(R.id.save_button)
+        radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
         editText = view.findViewById<EditText>(R.id.editTextPhone)
         setupEditText()
+        setupSaveButton()
 
         return view
     }
@@ -64,6 +79,33 @@ class SecondFragment : Fragment() {
                 }
             }
             false
+        }
+
+        editText.doOnTextChanged { text, start, before, count ->
+            saveButton.isEnabled = !text.isNullOrEmpty()
+        }
+    }
+
+    private fun setupSaveButton() {
+        saveButton.setOnClickListener {
+            val phone: String = editText.text.toString()
+            val regexType = when (radioGroup.checkedRadioButtonId) {
+                R.id.start_radio -> RegexType.START
+                R.id.end_radio -> RegexType.END
+                else -> RegexType.MIDDLE
+            }
+
+            val regex = when (regexType) {
+                RegexType.START -> Regex("$phone\\d")
+                RegexType.MIDDLE -> Regex("\\d$phone\\d")
+                RegexType.END -> Regex("\\d$phone")
+            }
+
+            val spamNumber = SpamNumber(phone, regexType, regex)
+
+//            SpamNumberDatabase.getInstance(requireContext()).dao.insert(spamNumber)
+
+
         }
     }
 

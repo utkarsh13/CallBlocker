@@ -6,25 +6,25 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = [BlockedNumber::class], version = 1)
+@Database(entities = [SpamNumber::class], version = 1)
 @TypeConverters(Converters::class)
-abstract class BlockedNumberDatabase : RoomDatabase() {
+abstract class SpamNumberDatabase : RoomDatabase() {
 
-    abstract val dao: BlockedNumberDatabaseDao
+    abstract val dao: SpamNumberDatabaseDao
 
     companion object {
 
         @Volatile
-        private var INSTANCE: BlockedNumberDatabase? = null
+        private var INSTANCE: SpamNumberDatabase? = null
 
-        fun getInstance(context: Context): BlockedNumberDatabase {
+        fun getInstance(context: Context): SpamNumberDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        BlockedNumberDatabase::class.java,
-                        "blocked_number_database"
+                        SpamNumberDatabase::class.java,
+                        "spam_number_database"
                     )
                         .fallbackToDestructiveMigration()
                         .build()
