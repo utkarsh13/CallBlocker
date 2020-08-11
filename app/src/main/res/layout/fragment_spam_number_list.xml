@@ -47,7 +47,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/blueGray800"
-            android:tint="@color/yellow600"
+            android:tint="@color/yellow550"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:maxImageSize="24dp"
