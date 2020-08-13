@@ -104,9 +104,9 @@ class AddSpamNumberFragment : Fragment() {
             }
 
             val regex = when (regexType) {
-                RegexType.START -> Regex("$phone\\d")
-                RegexType.MIDDLE -> Regex("\\d$phone\\d")
-                RegexType.END -> Regex("\\d$phone")
+                RegexType.START -> Regex("$phone\\d*")
+                RegexType.MIDDLE -> Regex("\\d*$phone\\d*")
+                RegexType.END -> Regex("\\d*$phone")
             }
 
             val spamNumber = SpamNumber(phone, regexType, regex)
