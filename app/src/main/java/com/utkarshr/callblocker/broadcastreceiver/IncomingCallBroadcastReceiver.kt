@@ -42,10 +42,10 @@ class IncomingCallBroadcastReceiver : BroadcastReceiver() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     if (it != null) {
-                        val matches = it.map { it ->
-                            it.regex
+                        val matches = it.map { sp ->
+                            sp.regex
                         }
-                            .filter { it -> phoneNumber.matches(it) }
+                            .filter { reg -> phoneNumber.matches(reg) }
 
                         Log.i(LOG_TAG, "Matches $matches")
                         if(matches.count() > 0) {
