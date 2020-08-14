@@ -43,7 +43,7 @@ class SpamListAdapter : RecyclerView.Adapter<SpamListAdapter.SpamListViewHolder>
         holder.viewDataBinding.executePendingBindings()
         holder.itemView.textView_number.text = displayText
         holder.itemView.setOnClickListener {
-//            TODO("on click listener")
+
         }
     }
 

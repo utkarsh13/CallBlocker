@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.utkarshr.callblocker.MainActivity
 import com.utkarshr.callblocker.R
+import com.utkarshr.callblocker.addItemDecorationWithoutLastDivider
 import com.utkarshr.callblocker.database.SpamNumberDatabase
 import com.utkarshr.callblocker.database.SpamNumberDatabaseDao
 import com.utkarshr.callblocker.databinding.FragmentSpamNumberListBinding
@@ -111,6 +112,8 @@ class SpamNumberListFragment : Fragment() {
                 adapter = spamListAdapter
             }
         }
+
+        recyclerView?.addItemDecorationWithoutLastDivider()
     }
 
     private fun requestPermissions() {
@@ -140,6 +143,4 @@ class SpamNumberListFragment : Fragment() {
             )
         }
     }
-
-
 }
