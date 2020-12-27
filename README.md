@@ -1,2 +1,2 @@
 # CallBlocker
-Call blocker for Android 10, supports regex
+Call blocker for Android 10, supports regex.
